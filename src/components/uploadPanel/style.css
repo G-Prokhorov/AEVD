@@ -1,0 +1,72 @@
+.panel {
+    height: 70%;
+    display: grid;
+    grid-template-areas: "a d"
+                         "c d";   
+}
+
+.composition {
+    grid-area: d;
+    height: 650px;
+    margin-left: 20px;
+    position: relative;
+}
+
+.button {
+    height: 100px;
+    grid-area: c;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.submitBth {
+    width: 80%;
+    height: 50px;
+    background-color: #282828;
+    outline: none;
+    font-family: 'Space Mono', monospace;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 4px;
+    transition: 1s;
+}
+
+.moon {
+    position: absolute;
+    top: 5%;
+    width: 500px;
+    left: -70px;
+    z-index: -1000;
+    animation: spin 500s linear infinite;
+}
+
+.video {
+    position: absolute;
+    background: url('../../img/d883f356f66173c404b5998ff70ea94a.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 80%;
+    right: 0;
+    box-shadow: 0px 0px 18px 5px rgba(255, 255, 255, 0.199);
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@media screen and (max-width: 992px) {
+
+}
+  
+@media screen and (max-width: 600px) {
+    .panel {
+        height: 70%;
+        display: grid;
+        grid-template-areas: "a"
+                             "c"
+                             "d";   
+    }
+}

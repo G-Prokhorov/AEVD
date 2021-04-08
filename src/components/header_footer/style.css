@@ -22,10 +22,17 @@ footer {
 }
 
 .childFoo {
-    width: 100px;
+    width: 150px;
     text-align: center;
-    margin: 0 20px;
+    margin: 0 50px;
     height: 16px;
+}
+
+.childFoo > a {
+    outline: none;
+    text-decoration: none;
+    color: #8d8d8d;
+    margin-left: 10px;
 }
 
 .icons {
