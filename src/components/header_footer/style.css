@@ -1,0 +1,42 @@
+header {
+    width: 100%;
+    height: 65px;
+    background: transparent;
+    text-align: center;
+}
+
+.logo {
+    height: 60px;
+}
+
+footer {
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #8d8d8d;
+    position: absolute;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+}
+
+.childFoo {
+    width: 100px;
+    text-align: center;
+    margin: 0 20px;
+    height: 16px;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.childFooName {height: 24px;}
+
+.name {
+    color: #fff;
+    font-size: 24px;
+}
+
