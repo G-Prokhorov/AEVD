@@ -29,14 +29,35 @@ html {
     border-radius: 8px;
 }
 
+@media screen and (max-width: 1500px) {
+    .container {
+        width: 80%;
+    }
+}
+
 @media screen and (max-width: 992px) {
     .container {
-        width: 100%;
+        width: 80%;
+    }
+    
+    .glow {
+        display: none;
+        opacity: 0;
+    }
+
+    html {
+        overflow: auto;
+        max-width: 992px;
     }
 }
   
 @media screen and (max-width: 600px) {
     .container {
-        width: 100%;
+        width: 90%;
+    }
+
+    html {
+        overflow: auto;
+        max-width: 600px;
     }
 }

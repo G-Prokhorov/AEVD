@@ -47,3 +47,23 @@ footer {
     font-size: 24px;
 }
 
+@media screen and (max-width: 992px) {
+   footer {
+        position: relative;
+        flex-flow: column;
+        height:  120px;
+   }
+
+   .childFoo {
+       margin: 10px 0;
+       width: 130px;
+   }
+   
+   .childFooName {
+       order: 1;
+   }
+}
+  
+@media screen and (max-width: 600px) {
+    
+}

@@ -10,6 +10,7 @@
     height: 650px;
     margin-left: 20px;
     position: relative;
+    margin-bottom: 40px;
 }
 
 .button {
@@ -57,16 +58,45 @@
     to {transform:rotate(360deg);}
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1400px) {
+    .moon {
+        display: none;
+    }
 
+    .composition {
+        margin-left: 0px;
+    }
+
+    .video {
+        margin: 0 auto;
+        width: 100%;
+        position: relative;
+    }
+
+    .panel {
+        height: 100%;
+        grid-template-areas: "a d d"
+                             "a d d"
+                             "c d d";   
+    }
+
+    
 }
   
+@media screen and (max-width: 992px) {
+    .panel {
+        height: 100%;
+        grid-template-areas: "d"
+                             "a"
+                             "c"; 
+    }
+}
+
 @media screen and (max-width: 600px) {
     .panel {
-        height: 70%;
-        display: grid;
-        grid-template-areas: "a"
-                             "c"
-                             "d";   
+        height: 100%;
+        grid-template-areas: "d"
+                             "a"
+                             "c";   
     }
 }

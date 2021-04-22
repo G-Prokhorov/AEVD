@@ -1,0 +1,121 @@
+.musicPanel {
+    height: 70vh;
+    display: grid;
+    grid-template-areas: "d a"
+                         "d a"
+                         "d c"; 
+}
+
+.musicPanel > .list, .tape{
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.list {
+    height: 100%;
+    width: 95%;
+    overflow: auto;
+    grid-area: d;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
+}
+
+.element {
+    width: 90%;
+    margin: 10px auto;
+    height: 100px;
+    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.09);
+    border-color: #8d8d8d !important;
+}
+
+::-webkit-scrollbar-track {
+    background:transparent; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: rgb(85, 85, 85); 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(75, 75, 75); 
+}
+
+.list::-webkit-scrollbar { 
+    width: 8px !important;
+    height: 0px !important;
+ }
+
+
+.tape {
+    width: 95%;
+    height: 100%;
+    grid-area: c;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.tapeMusic {
+    width: 83%;
+    height: 100%;
+    border-color: #7e3fcb !important;
+    box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.tapeMusic::-webkit-scrollbar { 
+    width: 0px !important;
+    height: 0px !important;
+}
+
+.tapePanel {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time {
+    width: 83%;
+    height: 25px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    font-size: 24px;
+    color: #fff;
+    position: relative;
+}
+
+.time > span {
+    position: absolute;
+}
+
+.time > span:nth-child(1) {
+    left: 0;
+}
+
+.time > span:nth-child(2) {
+    right: 0;
+}
+
+.soundtrack {
+    height: 100%;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+}
+
+.playBth {
+    height: 100%;
+    width: 13%;
+    background-color: #282828;
+    outline: none;
+    transition: 1s;
+}
+
+.playBth:active .play{
+    transition: 1s;
+    fill: #241337;
+}

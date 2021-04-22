@@ -1,19 +1,20 @@
 
 import './resetStyle.css';
-import './globalStyle.css';
 
 import Header from './components/header_footer/Header';
 import Footer from './components/header_footer/Footer';
 import Panel from './components/uploadPanel/Panel';
-import Glow from './components/glow/Glow';
+import Music from './components/musicPage/MusicPage';
+
+import './globalStyle.css';
 
 
 function App() {
   return (
     <>
-      <Glow />
       <Header />
-      <Panel />
+      {/* <Panel /> */}
+      <Music />
       <Footer />
     </>
   );

@@ -8,7 +8,8 @@ input[type="file"] {
 
 .inputBox {
     position: relative;
-    width: 100%;
+    margin: 0 auto;
+    width: 95%;
     height: 400px;
     transition: 1s;
     grid-area: a;
@@ -26,5 +27,17 @@ input[type="file"] {
 .inputBox:active .folder{
     fill: #241337;
 }
+
+@media screen and (max-width: 1400px) {
+    .inputBox {
+        height: 500px;
+    }
+}
+   
+ @media screen and (max-width: 600px) {
+    .inputBox {
+        height: 350px;
+    }
+ }
 
 
