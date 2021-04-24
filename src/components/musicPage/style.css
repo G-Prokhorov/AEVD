@@ -60,7 +60,7 @@
 .tapeMusic {
     width: 83%;
     height: 100%;
-    border-color: #7e3fcb !important;
+    border-color: #4d1988 !important;
     box-sizing: border-box;
     overflow-x: scroll;
     overflow-y: hidden;
@@ -69,7 +69,7 @@
 
 .tapeMusic::-webkit-scrollbar { 
     width: 0px !important;
-    height: 0px !important;
+    height: 6px !important;
 }
 
 .tapePanel {
@@ -104,12 +104,11 @@
 
 .soundtrack {
     height: 100%;
-    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 
 .playBth {
     height: 100%;
-    width: 13%;
+    width: 14%;
     background-color: #282828;
     outline: none;
     transition: 1s;
