@@ -2,6 +2,8 @@ import react, { useState, useEffect } from "react";
 import audio from "./audio.mp3";
 import WaveSurfer from 'wavesurfer.js';
 
+let TapeTimeLen = 20;
+
 const useAudio = url => {
     const [audio] = useState(new Audio(url));
     const [playing, setPlaying] = useState(false);
@@ -14,7 +16,7 @@ const useAudio = url => {
 
     const setTimePos = (target) => {
         setPlaying(false);
-        let width = target.offsetWidth / 15;
+        let width = target.offsetWidth / TapeTimeLen;
         setTime(Math.round(target.scrollLeft / width));
     }
 
@@ -27,11 +29,10 @@ const useAudio = url => {
     useEffect(() => {
         if (playing) {
             let myTimer = setInterval(() => {
-                console.log("here");
-                if (audio.currentTime > Time + 15) {
+                if (audio.currentTime >= Time + TapeTimeLen) {
                     setPlaying(false);
                 }
-            }, 1000);
+            }, 500);
             return () => {
                 clearInterval(myTimer);
             }
@@ -41,7 +42,7 @@ const useAudio = url => {
     useEffect(() => {
         audio.addEventListener('ended', () => setPlaying(false));
         audio.addEventListener("loadedmetadata", function () {
-            setTapeLen(((audio.duration + 2) / 15) * 100);
+            setTapeLen(((audio.duration + 2) / TapeTimeLen) * 100);
         });
         return () => {
             audio.removeEventListener('ended', () => setPlaying(false));
@@ -80,7 +81,7 @@ export default function Tape() {
     return <div className="tape">
         <div className="time">
             <span>{Math.floor(Time / 60)}:{Time % 60}</span>
-            <span>{Math.floor((Time + 15) / 60)}:{(Time + 15) % 60}</span>
+            <span>{Math.floor((Time + TapeTimeLen) / 60)}:{(Time + TapeTimeLen) % 60}</span>
         </div>
         <div className="tapePanel">
             <div id="tape" className="tapeMusic border" onScroll={scroll}>
