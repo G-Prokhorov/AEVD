@@ -1,15 +1,14 @@
 import react, { useState, useEffect } from "react";
-import audio from "./audio.mp3";
+// import audio from "./audio1.mp3";
 import WaveSurfer from 'wavesurfer.js';
 
 let TapeTimeLen = 20;
 
-const useAudio = url => {
-    const [audio] = useState(new Audio(url));
+const useAudio = () => {
+    const [audio] = useState(new Audio());
     const [playing, setPlaying] = useState(false);
     const [Time, setTime] = useState(0);
     const [TapeLen, setTapeLen] = useState(100);
-
     audio.volume = 0.1;
 
     const toggle = () => setPlaying(!playing);
@@ -18,11 +17,17 @@ const useAudio = url => {
         setPlaying(false);
         let width = target.offsetWidth / TapeTimeLen;
         setTime(Math.round(target.scrollLeft / width));
+        audio.currentTime = Time;
     }
 
+    const setAudio = (url) => {
+        setPlaying(false);
+        audio.pause();
+        audio.src = url;
+        audio.load();
+    }
 
     useEffect(() => {
-        audio.currentTime = Time;
         playing ? audio.play() : audio.pause();
     }, [playing]);
 
@@ -31,6 +36,7 @@ const useAudio = url => {
             let myTimer = setInterval(() => {
                 if (audio.currentTime >= Time + TapeTimeLen) {
                     setPlaying(false);
+                    audio.currentTime = Time;
                 }
             }, 500);
             return () => {
@@ -47,36 +53,40 @@ const useAudio = url => {
         return () => {
             audio.removeEventListener('ended', () => setPlaying(false));
         };
-    }, []);
+    }, [audio]);
 
-    return [playing, toggle, Time, setTimePos, TapeLen];
+    return [playing, toggle, Time, setTimePos, TapeLen, setAudio];
 };
 
-export default function Tape() {
-    const [playing, toggle, Time, setTimePos, my_width] = useAudio(audio);
+export default function Tape(props) {
     function scroll(event) {
         setTimePos(event.target);
     }
 
+    let [playing, toggle, Time, setTimePos, my_width, setAudio] = useAudio();
+
     useEffect(() => {
-        let waveform = WaveSurfer.create({
-            barWidth: 5,
-            cursorWidth: 1,
-            container: '#waveform',
-            backend: 'WebAudio',
-            height: 100,
-            progressColor: '#7e3fcb',
-            responsive: true,
-            waveColor: '#7e3fcb',
-            cursorColor: 'transparent',
-        });
+        if (props.audio) {
+            let audio = URL.createObjectURL(props.audio);
+            setAudio(audio)
 
-        waveform.load(audio);
-
-        return () => {
-            waveform.destroy();
+            let waveform = WaveSurfer.create({
+                barWidth: 5,
+                cursorWidth: 1,
+                container: '#waveform',
+                backend: 'WebAudio',
+                height: 100,
+                progressColor: '#7e3fcb',
+                responsive: true,
+                waveColor: '#7e3fcb',
+                cursorColor: 'transparent',
+            });
+            waveform.load(audio);
+            return () => {
+                waveform.destroy();
+            }
         }
-    }, [audio])
+    }, [props.audio])
 
     return <div className="tape">
         <div className="time">

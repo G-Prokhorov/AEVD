@@ -6,7 +6,7 @@ import moon from "../../img/moon2.png"
 
 export default function UploadPanel() {
     return <main className="container panel">
-        <Upload />
+        <Upload accept={".mp4 .wmv .flv .ogv"} />
         <div className="composition">
             <img src={moon} alt="" className="moon" />
             <div className="video" />
