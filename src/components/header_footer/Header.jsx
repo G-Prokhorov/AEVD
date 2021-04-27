@@ -2,8 +2,8 @@ import React from "react";
 import logo from "../../img/logo.png"
 import "./style.css"
 
-export default function Header() {
+export default function Header(props) {
     return <header>
-        <img src={logo} className="logo" alt="AEVD" />
+        <img onClick={() => { props.setPage('main') }} src={logo} className="logo" alt="AEVD" />
     </header>
 }

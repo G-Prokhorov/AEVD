@@ -1,62 +1,8 @@
 import react, { useState, useEffect } from "react";
-// import audio from "./audio1.mp3";
-import WaveSurfer from 'wavesurfer.js';
+import wave from "./wave";
+import useAudio from "./useAudio";
 
-let TapeTimeLen = 20;
-
-const useAudio = () => {
-    const [audio] = useState(new Audio());
-    const [playing, setPlaying] = useState(false);
-    const [Time, setTime] = useState(0);
-    const [TapeLen, setTapeLen] = useState(100);
-    audio.volume = 0.1;
-
-    const toggle = () => setPlaying(!playing);
-
-    const setTimePos = (target) => {
-        setPlaying(false);
-        let width = target.offsetWidth / TapeTimeLen;
-        setTime(Math.round(target.scrollLeft / width));
-        audio.currentTime = Time;
-    }
-
-    const setAudio = (url) => {
-        setPlaying(false);
-        audio.pause();
-        audio.src = url;
-        audio.load();
-    }
-
-    useEffect(() => {
-        playing ? audio.play() : audio.pause();
-    }, [playing]);
-
-    useEffect(() => {
-        if (playing) {
-            let myTimer = setInterval(() => {
-                if (audio.currentTime >= Time + TapeTimeLen) {
-                    setPlaying(false);
-                    audio.currentTime = Time;
-                }
-            }, 500);
-            return () => {
-                clearInterval(myTimer);
-            }
-        }
-    }, [playing])
-
-    useEffect(() => {
-        audio.addEventListener('ended', () => setPlaying(false));
-        audio.addEventListener("loadedmetadata", function () {
-            setTapeLen(((audio.duration + 2) / TapeTimeLen) * 100);
-        });
-        return () => {
-            audio.removeEventListener('ended', () => setPlaying(false));
-        };
-    }, [audio]);
-
-    return [playing, toggle, Time, setTimePos, TapeLen, setAudio];
-};
+const TapeTimeLen = 20;
 
 export default function Tape(props) {
     function scroll(event) {
@@ -69,19 +15,7 @@ export default function Tape(props) {
         if (props.audio) {
             let audio = URL.createObjectURL(props.audio);
             setAudio(audio)
-
-            let waveform = WaveSurfer.create({
-                barWidth: 5,
-                cursorWidth: 1,
-                container: '#waveform',
-                backend: 'WebAudio',
-                height: 100,
-                progressColor: '#7e3fcb',
-                responsive: true,
-                waveColor: '#7e3fcb',
-                cursorColor: 'transparent',
-            });
-            waveform.load(audio);
+            let waveform = wave('#waveform', audio);
             return () => {
                 waveform.destroy();
             }

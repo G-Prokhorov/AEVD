@@ -18,6 +18,8 @@ function App() {
   let [err, setErr] = useState(false);
   let [files, setFiles] = useState([]);
 
+  let [page, setPage] = useState('main');
+
   let showErr = () => {
     setErr(true);
     setTimeout(() => {
@@ -29,13 +31,13 @@ function App() {
     setAudio(event.target.files[0]);
   }
 
-  let uploadFiles = uploadF(setBlock, showErr);
-
+  let uploadFiles = uploadF(setBlock, showErr, setFiles);
+  console.log(files);
   return (
     <>
-      <Header />
-      <Panel state={uploadFiles} err={err} block={block} />
-      {/* <Music state={uploadAudio} audio={audio} /> */}
+      <Header setPage={setPage} />
+      {page === 'main' && <Panel state={uploadFiles} err={err} block={block} setPage={setPage} />}
+      {page === 'music' && <Music state={uploadAudio} audio={audio} setPage={setPage} />}
       <Footer />
     </>
   );
