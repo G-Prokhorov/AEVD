@@ -29,6 +29,15 @@ html {
     border-radius: 8px;
 }
 
+.submitBth:disabled {
+    border-color: #241337;
+    color: #adadad;
+}
+
+.submitBth:disabled:hover {
+    box-shadow: none;
+}
+
 @media screen and (max-width: 1500px) {
     .container {
         width: 80%;
