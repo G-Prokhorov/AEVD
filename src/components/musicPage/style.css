@@ -50,11 +50,12 @@
 
 .tape {
     width: 95%;
-    height: 100%;
+    height: 90%;
+    margin-top: 20px;
     grid-area: c;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .tapeMusic {
@@ -74,7 +75,7 @@
 
 .tapePanel {
     width: 100%;
-    height: 35%;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -117,4 +118,11 @@
 .playBth:active .play{
     transition: 1s;
     fill: #241337;
+}
+
+.musicContinue {
+    align-self: center;
+    width: 60%;
+    height: 100px;
+    margin-top: 50px;
 }

@@ -9,7 +9,17 @@ export default function Tape(props) {
         setTimePos(event.target);
     }
 
-    let [playing, toggle, Time, setTimePos, my_width, setAudio] = useAudio();
+    function Continue() {
+        props.setPage("interval");
+        props.info(prev => {
+            return {
+                ...prev,
+                start: Time,
+            }
+        })
+    }
+
+    let [playing, toggle, Time, setTimePos, my_width, setAudio] = useAudio(props.info);
 
     useEffect(() => {
         if (props.audio) {
@@ -41,6 +51,7 @@ export default function Tape(props) {
                     </svg>}
             </button>
         </div>
+        <button onClick={Continue} className="musicContinue submitBth border animation1">Continue</button>
 
     </div >
 }

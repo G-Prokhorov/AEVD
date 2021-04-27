@@ -1,0 +1,19 @@
+.intervalPanel {
+    display: flex;
+    flex-flow: column;
+    height: 70vh;
+}
+
+#musicInterval {
+    height: 100px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.controlPanel > button {
+    display: inline-block;
+    margin: 20px 20px 0 0;
+    width: 10vh;
+    height: 10vh;
+}

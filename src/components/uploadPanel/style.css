@@ -23,13 +23,6 @@
 .submitBth {
     width: 80%;
     height: 50px;
-    background-color: #282828;
-    outline: none;
-    font-family: 'Space Mono', monospace;
-    color: #fff;
-    font-size: 20px;
-    letter-spacing: 4px;
-    transition: 1s;
 }
 
 .moon {

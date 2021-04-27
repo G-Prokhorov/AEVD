@@ -29,6 +29,16 @@ html {
     border-radius: 8px;
 }
 
+.submitBth {
+    background-color: #282828;
+    outline: none;
+    font-family: 'Space Mono', monospace;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 4px;
+    transition: 1s;
+}
+
 .submitBth:disabled {
     border-color: #241337;
     color: #adadad;
