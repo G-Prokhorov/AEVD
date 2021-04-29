@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 export default function PlayBth(props) {
     return <button onClick={props.toggle} className="playBth border animation1" style={props.style}>

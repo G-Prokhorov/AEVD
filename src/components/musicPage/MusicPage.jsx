@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React from "react";
 import Upload from "../uploadPanel/Upload";
 import List from "./List";
 import Tape from "./Tape"

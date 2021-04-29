@@ -1,5 +1,3 @@
-import react, { useState } from "react";
-
 export default function uploadF(setBlock, showErr, setFiles) {
     let uploadFiles = (event) => {
         let files = Array.from(event.target.files);

@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 const TapeTimeLen = 20;
 
 const useAudio = () => {

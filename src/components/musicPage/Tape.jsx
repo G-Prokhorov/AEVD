@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import React, { useEffect } from "react";
 import PlayBth from "./PlayBth";
 import wave from "./wave";
 

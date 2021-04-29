@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import PlayBth from "../musicPage/PlayBth";
 import wave from "../musicPage/wave";
@@ -19,6 +19,14 @@ export default function IntervalPanel(props) {
         addMark([]);
     }
 
+    // const [mousePosition, setMousePosition] = useState();
+
+    // useEffect(() => {
+    //     window.addEventListener("mousemove", ev => setMousePosition(ev.clientX));
+
+    //     return () => window.removeEventListener("mousemove", ev => setMousePosition(ev.clientX));
+    // }, []);
+
     function handleClick(event) {
         if (!clear) {
             setCount(count + 1);
@@ -33,15 +41,13 @@ export default function IntervalPanel(props) {
         }
     }
 
-    function deleteMark(event) {
+    function eventMark(event) {
         if (clear) {
             setCount(count - 1);
-            let id = event.target.id
+            let id = event.currentTarget.id;
             addMark(mark.filter(elmt => elmt.id != id))
         }
-
     }
-
     let my_width = duration != 0 ? ((duration + 2) / TapeTimeLen) * 100 : 100;
 
     useEffect(() => {
@@ -66,7 +72,7 @@ export default function IntervalPanel(props) {
             </div>
             {/* for mark */}
             {mark.map((elmt) => {
-                return <Mark id={elmt.id} event={deleteMark} style={{ left: elmt.left + "px" }} />
+                return <Mark id={elmt.id} key={elmt.id} event={eventMark} style={{ left: elmt.left + "px" }} />
             })}
         </div>
         <div className="controlPanel">

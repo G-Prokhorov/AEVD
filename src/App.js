@@ -1,7 +1,7 @@
 
 import './resetStyle.css';
 
-import react, { useState } from "react";
+import React, { useState } from "react";
 
 import Header from './components/header_footer/Header';
 import Footer from './components/header_footer/Footer';
