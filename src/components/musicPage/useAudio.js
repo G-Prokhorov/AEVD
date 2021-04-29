@@ -45,7 +45,7 @@ const useAudio = () => {
                 clearInterval(myTimer);
             }
         }
-    }, [playing])
+    }, [playing]);
 
     useEffect(() => {
         audio.addEventListener('ended', () => setPlaying(false));
@@ -53,8 +53,7 @@ const useAudio = () => {
             setDuration(audio.duration);
         });
         return () => {
-            audio.pause();
-            // audio.removeEventListener('ended', () => setPlaying(false));
+            audio.removeEventListener('ended', () => setPlaying(false));
         };
     }, [audio]);
 

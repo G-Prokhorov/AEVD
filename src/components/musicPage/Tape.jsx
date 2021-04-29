@@ -8,13 +8,13 @@ export default function Tape(props) {
     function scroll(event) {
         setTime(event.target);
     }
-
     function Continue() {
         stop()
         props.setPage("interval");
     }
 
     let { audio, playing, toggle, Time, setTime, duration, stop } = props.info;
+
     useEffect(() => {
         if (audio.src) {
             let waveform = wave('#waveform', audio);
@@ -33,7 +33,7 @@ export default function Tape(props) {
         </div>
         <div className="tapePanel">
             <div id="tape" className="tapeMusic border" onScroll={scroll}>
-                <div id="waveform" class="soundtrack" style={{ width: my_width + "%" }}></div>
+                <div id="waveform" className="soundtrack" style={{ width: my_width + "%" }}></div>
             </div>
             <PlayBth playing={playing} toggle={toggle} />
         </div>

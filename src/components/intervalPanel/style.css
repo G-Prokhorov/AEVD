@@ -9,11 +9,63 @@
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    position: relative;
 }
 
-.controlPanel > button {
-    display: inline-block;
-    margin: 20px 20px 0 0;
+#musicInterval > div {
+    position: absolute;
+    height: 100%;
+}
+
+.controlPanel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.controlPanel button {
+    margin: 20px 0;
     width: 10vh;
     height: 10vh;
+    box-sizing: border-box;
+    padding-top: 8px;
+}
+
+.controlPanel button:active .play{
+    transition: 1s;
+    fill: #241337;
+}
+
+.controlPanel > .generator {
+    padding: 0;
+    flex-basis: 30%;
+    font-size: 24px;
+}
+
+.controlPanel > div {
+    display: flex;
+    justify-content: space-between;
+    width: 22vh;
+}
+
+.mark {
+    position: absolute;
+    top: -25px;
+    z-index: 10000;
+    width: 40px;
+    left: 100px;
+    height: 120%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mark > div {
+    height: 100%;
+    width: 1;
+    background: #fff;
+    border: 1px solid #fff;
+}
+
+.forMark {
+    position: relative;
 }

@@ -33,7 +33,7 @@ function App() {
   let uploadFiles = uploadF(setBlock, showErr, setFiles);
   return (
     <>
-      <Header setPage={setPage} />
+      <Header setPage={setPage} stop={reset} />
       {page === 'main' && <Panel state={uploadFiles} err={err} block={block} setPage={setPage} />}
       {page === 'music' && <Music setPage={setPage} info={{
         setAudio: setAudio,
@@ -45,7 +45,14 @@ function App() {
         duration: duration,
         stop: reset,
       }} />}
-      {page === 'interval' && <IntervalPanel />}
+      {page === 'interval' && <IntervalPanel info={{
+        playing: playing,
+        toggle: toggle,
+        Time: Time,
+        duration: duration,
+        reset: reset,
+        audio: audio,
+      }} />}
       <Footer />
     </>
   );
