@@ -36,7 +36,6 @@ export default function uploadF(setBlock, showErr, setFiles) {
                 result.length += time;
             }
         }).then(() => {
-            console.log(result.length)
             if (!result.notVideo && result.length > 20) {
                 setFiles(files);
                 setBlock(false);

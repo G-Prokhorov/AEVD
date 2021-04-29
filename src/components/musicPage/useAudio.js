@@ -1,11 +1,11 @@
 import react, { useState, useEffect } from "react";
 const TapeTimeLen = 20;
 
-const useAudio = (setDur) => {
+const useAudio = () => {
     const [audio] = useState(new Audio());
     const [playing, setPlaying] = useState(false);
     const [Time, setTime] = useState(0);
-    const [TapeLen, setTapeLen] = useState(100);
+    const [Duration, setDuration] = useState(-2);
     audio.volume = 0.1;
 
     const toggle = () => setPlaying(!playing);
@@ -24,6 +24,12 @@ const useAudio = (setDur) => {
         audio.load();
     }
 
+    const reset = () => {
+        setPlaying(false);
+        audio.pause();
+        audio.currentTime = Time;
+    }
+
     useEffect(() => {
         playing ? audio.play() : audio.pause();
     }, [playing]);
@@ -32,9 +38,7 @@ const useAudio = (setDur) => {
         if (playing) {
             let myTimer = setInterval(() => {
                 if (audio.currentTime >= Time + TapeTimeLen) {
-                    audio.pause();
-                    setPlaying(false);
-                    audio.currentTime = Time;
+                    reset();
                 }
             }, 500);
             return () => {
@@ -46,13 +50,7 @@ const useAudio = (setDur) => {
     useEffect(() => {
         audio.addEventListener('ended', () => setPlaying(false));
         audio.addEventListener("loadedmetadata", function () {
-            setDur(prev => {
-                return {
-                    ...prev,
-                    duration: audio.duration,
-                }
-            });
-            setTapeLen(((audio.duration + 2) / TapeTimeLen) * 100);
+            setDuration(audio.duration);
         });
         return () => {
             audio.pause();
@@ -60,7 +58,7 @@ const useAudio = (setDur) => {
         };
     }, [audio]);
 
-    return [playing, toggle, Time, setTimePos, TapeLen, setAudio];
+    return [audio, playing, toggle, Time, setTimePos, Duration, reset, setAudio];
 };
 
 export default useAudio;
