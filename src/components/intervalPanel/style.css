@@ -31,8 +31,18 @@
 }
 
 .controlPanel button:active .play{
-    transition: 1s;
+    transition: 0.5s;
     fill: #241337;
+}
+
+.active .play{
+    transition: 0.5s;
+    fill: #241337;
+}
+
+.active {
+    border-color: #241337 !important;
+    color: #241337 !important;
 }
 
 .controlPanel > .generator {
