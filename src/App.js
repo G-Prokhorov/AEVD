@@ -18,7 +18,7 @@ function App() {
   let [block, setBlock] = useState(true);
   let [err, setErr] = useState(false);
   let [files, setFiles] = useState([]);
-  let [audio, playing, toggle, Time, setTimePos, duration, reset, setAudio] = useAudio();
+  let [audio, playing, toggle, Time, setTimePos, duration, reset, setAudio, line] = useAudio();
 
 
   let [page, setPage] = useState('main');
@@ -52,6 +52,7 @@ function App() {
         duration: duration,
         reset: reset,
         audio: audio,
+        line: line,
       }} />}
       <Footer />
     </>

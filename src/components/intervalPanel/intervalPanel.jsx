@@ -9,7 +9,7 @@ import "./style.css";
 const TapeTimeLen = 20;
 
 export default function IntervalPanel(props) {
-    let { playing, toggle, Time, duration, reset, audio } = props.info;
+    let { playing, toggle, Time, duration, reset, audio, line } = props.info;
     let [left, setLeft] = useState(0);
     let [count, setCount] = useState(0);
     let [mark, addMark] = useState([]);
@@ -17,6 +17,7 @@ export default function IntervalPanel(props) {
 
     function ClearAll() {
         addMark([]);
+        setCount(0);
     }
 
     // const [mousePosition, setMousePosition] = useState();
@@ -29,14 +30,16 @@ export default function IntervalPanel(props) {
 
     function handleClick(event) {
         if (!clear) {
-            setCount(count + 1);
-            if (event.nativeEvent.offsetX - left > 0) {
-                let leftMark = event.nativeEvent.offsetX - left - 16;
+            if (event.nativeEvent.offsetX > 0 && count <= 25) { // was also - left
+                let leftMark = event.nativeEvent.offsetX;
+                let musicInterval = document.getElementById("musicInterval").offsetWidth;
+                let tm = TapeTimeLen * leftMark / musicInterval;
                 addMark([...mark, {
                     id: Date.now(),
-                    time: 0,
-                    left: leftMark,
+                    time: tm.toFixed(2),
+                    left: leftMark - 16,
                 }]);
+                setCount(count + 1);
             }
         }
     }
@@ -66,13 +69,14 @@ export default function IntervalPanel(props) {
     }, []);
 
     return <div className="container intervalPanel">
-        <div className="forMark">
+        <div className="forMark" style={{ cursor: clear ? "default" : "crosshair" }}>
+            <div className="line" style={{ left: line + "%" }}></div>
             <div onClick={handleClick} id="musicInterval" className="border">
                 <div id="waveform" style={{ width: my_width + "%", left: "-" + left + "px", }}></div>
             </div>
             {/* for mark */}
             {mark.map((elmt) => {
-                return <Mark id={elmt.id} key={elmt.id} event={eventMark} style={{ left: elmt.left + "px" }} />
+                return <Mark id={elmt.id} key={elmt.id} event={eventMark} style={{ left: elmt.left + "px", cursor: clear ? "pointer" : "default", }} />
             })}
         </div>
         <div className="controlPanel">

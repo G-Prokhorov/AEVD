@@ -16,7 +16,7 @@ export default function uploadF(setBlock, showErr, setFiles) {
 
         for (let file of files) {
             promises.push(new Promise(function (resolve, reject) {
-                if (file.type.split("/")[0] == "video") {
+                if (file.type.split("/")[0] === "video") {
                     let media = new Audio(URL.createObjectURL(file));
                     media.onloadedmetadata = function () {
                         resolve(media.duration);

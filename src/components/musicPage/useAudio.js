@@ -6,6 +6,7 @@ const useAudio = () => {
     const [playing, setPlaying] = useState(false);
     const [Time, setTime] = useState(0);
     const [Duration, setDuration] = useState(-2);
+    const [line, setLine] = useState(0);
     audio.volume = 0.1;
 
     const toggle = () => setPlaying(!playing);
@@ -25,6 +26,7 @@ const useAudio = () => {
     }
 
     const reset = () => {
+        setLine(0)
         setPlaying(false);
         audio.pause();
         audio.currentTime = Time;
@@ -32,6 +34,20 @@ const useAudio = () => {
 
     useEffect(() => {
         playing ? audio.play() : audio.pause();
+        if (playing) {
+            let next = line;
+            let tmp = setInterval(() => {
+                next += 0.098;
+                if (next < 100) {
+                    setLine(next);
+                }
+
+            }, 20);
+
+            return () => {
+                clearInterval(tmp);
+            }
+        }
     }, [playing]);
 
     useEffect(() => {
@@ -57,7 +73,7 @@ const useAudio = () => {
         };
     }, [audio]);
 
-    return [audio, playing, toggle, Time, setTimePos, Duration, reset, setAudio];
+    return [audio, playing, toggle, Time, setTimePos, Duration, reset, setAudio, line];
 };
 
 export default useAudio;

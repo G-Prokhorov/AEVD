@@ -15,6 +15,7 @@
 #musicInterval > div {
     position: absolute;
     height: 100%;
+    z-index: -2;
 }
 
 .controlPanel {
@@ -78,4 +79,15 @@
 
 .forMark {
     position: relative;
+    z-index: 10;
+}
+
+.line {
+    position: absolute;
+    height: 124%;
+    top: -12%;
+    z-index: -1;
+    width: 0;
+    background: #fff;
+    border: 2px solid rgb(185, 0, 0);
 }
