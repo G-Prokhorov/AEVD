@@ -161,7 +161,7 @@
                              "c"; 
     }
 
-    .list { 
+    .listDiv { 
         height: 500px;
         width: 100%;
     }
@@ -170,9 +170,43 @@
         margin-bottom: 80px;
     }
 
+    .wire {
+        width: 90%;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
+    .list {
+        width: 100%;
+    }
 
+    .wire {
+        width: 98%;
+    }
 
+    .musicContinue {
+        width: 80%;
+    }
+
+    .tapePanel {
+        height: 200px;
+        flex-direction: column;
+        box-sizing: content-box;
+    }
+
+    .tapePanel > .tapeMusic {
+        box-sizing: content-box;
+        width: 95%;
+        margin-bottom: 30px;
+    }
+
+    .time {
+        width: 110%;
+        right: 5%;
+    }
+
+    .tapePanel > .playBth {
+        width: 40%;
+    }
 }
