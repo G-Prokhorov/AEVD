@@ -1,14 +1,15 @@
 .intervalPanel {
+    margin-top: 6% !important;
     display: flex;
     flex-flow: column;
-    height: 70vh;
+    height: 40vh;
 }
 
 #musicInterval {
     height: 100px;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: hidden !important;
     position: relative;
 }
 

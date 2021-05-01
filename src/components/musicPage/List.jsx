@@ -1,6 +1,6 @@
 import React from "react"
 
-import Wire from "./wire"
+import Wire from "../svgComp/wire"
 
 export default function List() {
     let create = () => {

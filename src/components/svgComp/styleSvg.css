@@ -1,0 +1,43 @@
+.wireMain {
+    width: 30%;
+    position: fixed;
+    transform: rotate(-45deg);
+    right: -6%;
+    bottom: 6%;
+}
+
+.statellite {
+    position: fixed;
+    top: 25%;
+    left: -8%;
+    z-index: -100;
+    transform: rotate(80deg);
+    width: 500px;
+}
+
+.wire {
+    position: absolute;
+    bottom: -100px;
+    transform: rotate(-1deg);
+    left: 0;
+    right: 45px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+@media screen and (max-width: 992px) {
+    .wire {
+        width: 90%;
+    }
+
+    .wireMain, .statellite {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .wire {
+        width: 98%;
+    }
+}

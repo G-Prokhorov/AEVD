@@ -13,6 +13,7 @@
     z-index: 10000;
     box-sizing: border-box;
     padding: 10px;
+    cursor: default;
 }
 
 .errDiv > h3 {

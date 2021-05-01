@@ -1,5 +1,6 @@
 export default function uploadF(setBlock, showErr, setFiles) {
     let uploadFiles = (event) => {
+        setBlock(true);
         let files = Array.from(event.target.files);
 
         if (files.length < 5) {
@@ -9,10 +10,7 @@ export default function uploadF(setBlock, showErr, setFiles) {
 
         let promises = [];
 
-        let result = {
-            notVideo: false,
-            length: 0,
-        }
+        let result = 0;
 
         for (let file of files) {
             promises.push(new Promise(function (resolve, reject) {
@@ -23,7 +21,7 @@ export default function uploadF(setBlock, showErr, setFiles) {
                     }
 
                 } else {
-                    result.notVideo = true;
+                    showErr();
                     reject();
                 }
             }));
@@ -31,10 +29,10 @@ export default function uploadF(setBlock, showErr, setFiles) {
 
         Promise.all(promises).then((vals) => {
             for (let time of vals) {
-                result.length += time;
+                result += time;
             }
         }).then(() => {
-            if (!result.notVideo && result.length > 20) {
+            if (result > 30) {
                 setFiles(files);
                 setBlock(false);
             } else {

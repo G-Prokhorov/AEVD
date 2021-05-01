@@ -1,11 +1,13 @@
 import React from "react"
 
-export default function Wire() {
+import "./styleSvg.css"
+
+export default function Wire(props) {
     return <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
         height="200" viewBox="0 0 1939.000000 288.000000"
-        preserveAspectRatio="xMidYMid meet" className="wire">
+        preserveAspectRatio="xMidYMid meet" className={props.classname ? props.classname : "wire"}>
         <g transform="translate(0.000000,288.000000) scale(0.100000,-0.100000)"
-            fill="#fff" stroke="none">
+            fill="#aaa" stroke="none">
             <path d="M12518 2653 c-98 -107 -144 -274 -155 -560 -4 -107 -10 -153 -18
    -153 -6 0 -38 11 -71 24 -77 31 -160 44 -319 50 -217 9 -436 -18 -644 -81
    -136 -41 -196 -65 -361 -146 l-125 -62 -90 1 c-87 2 -186 11 -585 54 -393 43

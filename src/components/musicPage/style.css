@@ -136,20 +136,10 @@
 }
 
 .musicContinue {
-    align-self: center;
     width: 60%;
-    height: 100px;
     margin-top: 50px;
-}
-
-.wire {
-    position: absolute;
-    bottom: -100px;
-    transform: rotate(-1deg);
-    left: 0;
-    right: 45px;
-    margin: 0 auto;
-    width: 90%;
+    align-self: center;
+    height: 100px;
 }
 
 @media screen and (max-width: 992px) {
