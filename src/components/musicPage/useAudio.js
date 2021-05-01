@@ -38,7 +38,7 @@ const useAudio = () => {
             let next = line;
             let tmp = setInterval(() => {
                 next += 0.098;
-                if (next < 100) {
+                if (next < 99.2) {
                     setLine(next);
                 }
 

@@ -37,7 +37,7 @@ export default function IntervalPanel(props) {
                 addMark([...mark, {
                     id: Date.now(),
                     time: tm.toFixed(2),
-                    left: leftMark - 16,
+                    left: leftMark - 1,
                 }]);
                 setCount(count + 1);
             }

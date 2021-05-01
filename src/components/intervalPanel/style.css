@@ -62,7 +62,7 @@
     position: absolute;
     top: -25px;
     z-index: 10000;
-    width: 40px;
+    width: 10px;
     left: 100px;
     height: 120%;
     display: flex;
@@ -90,4 +90,50 @@
     width: 0;
     background: #fff;
     border: 2px solid rgb(185, 0, 0);
+}
+
+@media screen and (max-width: 800px) {
+    .controlPanel {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 90%;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    .controlPanel > div {
+        height: 1.5vh;
+    }
+
+    .controlPanel > div:nth-child(1) {
+        margin-right: 50px;
+    }
+
+    .controlPanel > .generator {
+        flex-basis: 50%;
+        height: 100px;
+        order: 1;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .controlPanel {
+        margin-top: 40px;
+        flex-direction: column wrap;
+        justify-content: center;
+        align-content: space-between;
+    }
+
+    .controlPanel > div {
+        width: 60%;
+    }
+
+    .controlPanel > div:nth-child(1) {
+        margin-right: 0px;
+    }
+
+    .controlPanel > .generator {
+        flex-basis: 70%;
+    }
 }
