@@ -6,7 +6,7 @@
                          "d c"; 
 }
 
-.musicPanel > .list, .tape{
+.musicPanel > .list, .tape {
     box-sizing: border-box;
     margin: 0 auto;
 }
@@ -15,10 +15,15 @@
     height: 100%;
     width: 95%;
     overflow: auto;
-    grid-area: d;
     overflow-x: hidden;
     overflow-y: scroll;
     white-space: nowrap;
+}
+
+.listDiv {
+    grid-area: d;
+    position: relative;
+    height: 70vh;
 }
 
 .element {
@@ -34,7 +39,7 @@
 }
    
 ::-webkit-scrollbar-thumb {
-    background: rgb(85, 85, 85); 
+    background: #555555; 
     border-radius: 4px;
 }
 
@@ -88,7 +93,7 @@
     box-sizing: border-box;
     margin-bottom: 5px;
     font-size: 24px;
-    color: #fff;
+    color: rgb(211, 211, 211);
     position: relative;
 }
 
@@ -102,6 +107,14 @@
 
 .time > span:nth-child(2) {
     right: 0;
+}
+
+.musicPanel {
+    height: 70vh;
+    display: grid;
+    grid-template-areas: "d a"
+                         "d a"
+                         "d c"; 
 }
 
 .soundtrack {
@@ -127,4 +140,39 @@
     width: 60%;
     height: 100px;
     margin-top: 50px;
+}
+
+.wire {
+    position: absolute;
+    bottom: -100px;
+    transform: rotate(-1deg);
+    left: 0;
+    right: 45px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+@media screen and (max-width: 992px) {
+    .musicPanel {
+        height: 100%;
+        display: grid;
+        grid-template-areas: "d"
+                             "a"
+                             "c"; 
+    }
+
+    .list { 
+        height: 500px;
+        width: 100%;
+    }
+
+    .musicPanel > .listDiv {
+        margin-bottom: 80px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+
 }

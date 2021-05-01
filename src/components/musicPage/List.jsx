@@ -1,5 +1,7 @@
 import React from "react"
 
+import Wire from "./wire"
+
 export default function List() {
     let create = () => {
         let table = [];
@@ -10,7 +12,11 @@ export default function List() {
         return table;
     }
 
-    return <div className="list">
-        {create()}
+    return <div className="listDiv">
+        <div className="list">
+            {create()}
+        </div>
+        <Wire />
     </div>
+
 }
