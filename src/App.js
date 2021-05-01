@@ -12,6 +12,7 @@ import IntervalPanel from './components/intervalPanel/intervalPanel';
 import useAudio from "./components/musicPage/useAudio";
 
 import './globalStyle.css';
+import FilterPage from './components/filter/FilterPage';
 
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
         audio: audio,
         line: line,
       }} />}
+
+      {page === 'filter' && <FilterPage />}
       <Footer />
     </>
   );

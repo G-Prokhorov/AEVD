@@ -1,0 +1,49 @@
+.filterPage {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 40% 60%;
+    height: 70vh;
+}
+
+.filterPage:nth-child() {
+    box-sizing: border-box;
+}
+
+.filterList {
+    padding-left: 10%;
+    display: flex; 
+    flex-flow: column wrap;
+}
+
+.card {
+    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.09);
+    width: 250px;
+    height: 290px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: #4d1988;
+    font-size: 24px;
+    background: #8d8d8d;
+    margin-bottom: 5%;
+}
+
+.card > img {
+    object-fit: cover;
+    width: 220px;
+    height: 220px;
+    border-radius: 8px;
+}
+
+.preview {
+   height: 100%;
+   width: 100%; 
+}
+
+.preview > img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}

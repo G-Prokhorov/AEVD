@@ -125,7 +125,7 @@ export default function IntervalPanel(props) {
                 </div>
             </div>
             <div id="intervalBth" className="container">
-                <button className="submitBth border animation1" disabled={mark.length < 5 ? true : false} >Continue</button>
+                <button onClick={Continue} className="submitBth border animation1" disabled={mark.length < 5 ? true : false} >Continue</button>
                 <p style={{ opacity: mark.length < 5 ? 1 : 0 }} className="alert">Add minimum 5 mark</p>
             </div>
         </div >
