@@ -17,6 +17,7 @@ export default function UploadPanel(props) {
             </div>
             <div className="button">
                 <button onClick={() => { props.setPage('music') }} className="submitBth border animation1" disabled={props.block}>Submit</button>
+                <p style={{ opacity: props.block ? 1 : 0 }} className="alert">Select files</p>
             </div>
 
 

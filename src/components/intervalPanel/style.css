@@ -2,7 +2,7 @@
     margin-top: 6% !important;
     display: flex;
     flex-flow: column;
-    height: 40vh;
+    height: 65vh;
 }
 
 #musicInterval {
@@ -89,16 +89,29 @@
     top: -12%;
     z-index: -1;
     width: 0;
-    background: #fff;
+    background: rgb(185, 0, 0);
     border: 2px solid rgb(185, 0, 0);
+}
+
+#intervalBth {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#intervalBth > button {
+   width: 40%;
+   height: 100px;
 }
 
 @media screen and (max-width: 800px) {
     .controlPanel {
         flex-wrap: wrap;
         justify-content: center;
+        align-content: space-between;
         width: 90%;
-        height: 400px;
+        height: 300px;
         margin: 0 auto;
     }
 
@@ -115,26 +128,32 @@
         height: 100px;
         order: 1;
     }
+
+    #intervalBth {
+        margin-top: 40px;
+    }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
+    .intervalPanel {
+        height: 70vh;
+    }
 
     .controlPanel {
+        height: 400px;
         margin-top: 40px;
-        flex-direction: column wrap;
+        flex-flow: wrap;
         justify-content: center;
         align-content: space-between;
     }
 
     .controlPanel > div {
-        width: 60%;
-    }
-
-    .controlPanel > div:nth-child(1) {
-        margin-right: 0px;
+        height: 25vh;
+        width: 10vh;
+        flex-direction: column;
     }
 
     .controlPanel > .generator {
-        flex-basis: 70%;
+        flex-basis: 60%;
     }
 }

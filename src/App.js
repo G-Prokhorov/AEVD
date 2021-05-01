@@ -45,7 +45,7 @@ function App() {
         duration: duration,
         stop: reset,
       }} />}
-      {page === 'interval' && <IntervalPanel info={{
+      {page === 'interval' && <IntervalPanel setPage={setPage} info={{
         playing: playing,
         toggle: toggle,
         Time: Time,

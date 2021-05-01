@@ -11,6 +11,7 @@ export default function Tape(props) {
     function scroll(event) {
         setTime(event.target);
     }
+
     function Continue() {
         stop()
         props.setPage("interval");
@@ -19,7 +20,7 @@ export default function Tape(props) {
     let { audio, playing, toggle, Time, setTime, duration, stop } = props.info;
 
     useEffect(() => {
-        if (duration < 20) {
+        if (duration < 20 && audio.src) {
             setErr(true);
             let timeout = setTimeout(() => {
                 setErr(false);
@@ -27,7 +28,6 @@ export default function Tape(props) {
 
             return () => { clearTimeout(timeout) }
         }
-
     }, [duration])
 
     useEffect(() => {
@@ -54,5 +54,6 @@ export default function Tape(props) {
             <Error text="Upload a file at least 20 seconds long" action={err} />
         </div>
         <button onClick={Continue} className="musicContinue submitBth border animation1" disabled={duration < 20 ? true : false} >Continue</button>
+        <p style={{ opacity: audio.src ? 0 : 1 }} className="alert">Select audio file</p>
     </div >
 }
