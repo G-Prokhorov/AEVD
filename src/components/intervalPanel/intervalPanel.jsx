@@ -19,7 +19,6 @@ export default function IntervalPanel(props) {
     let [mark, addMark] = useState([]);
     let [clear, setClear] = useState(false);
     let [generate, setGenerate] = useState(false);
-    let [curentTime, setCurentTime] = useState(-1);
 
     function Continue() {
         props.setPage("filter");
@@ -27,23 +26,27 @@ export default function IntervalPanel(props) {
 
     useEffect(() => {
         if (generate) {
+            setGenerate(false);
+            let arr = [];
+            let curentTime = 0;
             let musicInterval = document.getElementById("musicInterval").offsetWidth;
-            let tmp = parseFloat((Math.random() * (maxInterval - minInterval) + minInterval).toFixed(1));
-            if (curentTime + tmp > TapeTimeLen - minInterval || mark.length > 30) {
-                setGenerate(false);
-            } else {
-                let leftMark = (curentTime + tmp) * musicInterval / TapeTimeLen;
-                addMark([...mark, {
-                    id: Date.now(),
-                    time: curentTime + tmp,
+            while (true) {
+                let tmp = parseFloat((Math.random() * (maxInterval - minInterval) + minInterval).toFixed(1));
+                curentTime += tmp;
+                if (curentTime > TapeTimeLen - minInterval || mark.length > 30) {
+                    break;
+                }
+
+                let leftMark = (curentTime) * musicInterval / TapeTimeLen;
+                arr.push({
+                    id: Date.now() + curentTime,
+                    time: curentTime,
                     left: leftMark - 1,
-                }]);
-                setCurentTime(curentTime + tmp);
+                });
             }
-        } else {
-            console.log("here?");
+            addMark(arr);
         }
-    }, [curentTime])
+    }, [mark]);
 
 
     function ClearAll() {
@@ -113,7 +116,7 @@ export default function IntervalPanel(props) {
                         </svg>
                     </button>
                 </div>
-                <button onClick={() => { ClearAll(); setCurentTime(0); setGenerate(true); }} className="submitBth border animation1 generator">Auto generate</button>
+                <button onClick={() => { ClearAll(); setGenerate(true); }} className="submitBth border animation1 generator">Auto generate</button>
                 <div>
                     <button onClick={reset} className="submitBth border animation1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#6328B8" className="play" viewBox="0 0 16 16">
