@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import Upload from "./Upload";
-import ErrorDiv from "../err/Error";
+import ErrorDiv from "../alert/Error";
 
 import moon from "../../img/moon2.png";
 import Wire from "../svgComp/wire";

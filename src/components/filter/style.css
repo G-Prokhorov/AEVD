@@ -19,6 +19,8 @@
     box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.09);
     width: 250px;
     height: 290px;
+    padding: 15px;
+    box-sizing: border-box;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -35,6 +37,7 @@
     width: 220px;
     height: 220px;
     border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .preview {

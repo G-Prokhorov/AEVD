@@ -34,7 +34,7 @@ function App() {
   let uploadFiles = uploadF(setBlock, showErr, setFiles);
   return (
     <>
-      <Header setPage={setPage} stop={reset} />
+      <Header setPage={setPage} page={page} stop={reset} />
       {page === 'main' && <Panel state={uploadFiles} err={err} block={block} setPage={setPage} />}
       {page === 'music' && <Music setPage={setPage} info={{
         setAudio: setAudio,
