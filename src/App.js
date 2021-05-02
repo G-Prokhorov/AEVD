@@ -10,6 +10,7 @@ import Music from './components/musicPage/MusicPage';
 import uploadF from './components/uploadPanel/uploadFile';
 import IntervalPanel from './components/intervalPanel/intervalPanel';
 import useAudio from "./components/musicPage/useAudio";
+import Download from "./components/download/download";
 
 import './globalStyle.css';
 import FilterPage from './components/filter/FilterPage';
@@ -34,7 +35,7 @@ function App() {
   let uploadFiles = uploadF(setBlock, showErr, setFiles);
   return (
     <>
-      <Header setPage={setPage} stop={reset} />
+      <Header setPage={setPage} page={page} stop={reset} />
       {page === 'main' && <Panel state={uploadFiles} err={err} block={block} setPage={setPage} />}
       {page === 'music' && <Music setPage={setPage} info={{
         setAudio: setAudio,
@@ -56,7 +57,8 @@ function App() {
         line: line,
       }} />}
 
-      {page === 'filter' && <FilterPage />}
+      {page === 'filter' && <FilterPage setPage={setPage} />}
+      {page === 'download' && <Download />}
       <Footer />
     </>
   );

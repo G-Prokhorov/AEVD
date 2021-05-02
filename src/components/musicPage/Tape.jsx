@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Error from "../err/Error";
+import Error from "../alert/Error";
 import PlayBth from "./PlayBth";
 import wave from "./wave";
 

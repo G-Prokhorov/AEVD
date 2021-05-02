@@ -1,0 +1,36 @@
+.download {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animationLoad div {
+    will-change: transform;
+    border-radius: 10%;
+}
+
+.bg-square {
+    width: 300px;
+    height: 300px;
+    background-color: #4d1988;
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
+    display: grid;
+    place-items: center;
+}
+
+.middle-square {
+    display: grid;
+    place-items: center;
+    width: 220px;
+    height: 220px;
+    background-color: #6328b8;
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
+}
+
+.front-square {
+    width: 110px;
+    height: 110px;
+    background-color: #7e3fcb;
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
+}
