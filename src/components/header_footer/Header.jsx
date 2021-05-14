@@ -30,12 +30,12 @@ export default function Header(props) {
                     setMeme(false)
                 }, 5000)
                 break;
-            case 'music':
-                props.setNext('main');
+            case 'download':
+                setShow(true);
                 break;
             default:
-                setShow(true);
                 props.stop();
+                props.setPage('main');
                 break;
         }
     }

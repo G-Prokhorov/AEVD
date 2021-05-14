@@ -16,7 +16,7 @@ const minInterval = 0.5;
 export default function IntervalPanel(props) {
     let { playing, toggle, Time, duration, reset, audio, line } = props.info;
     let [left, setLeft] = useState(0);
-    let [mark, addMark] = useState([]);
+    let [mark, addMark] = props.mark;
     let [clear, setClear] = useState(false);
     let [generate, setGenerate] = useState(false);
 

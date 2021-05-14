@@ -7,10 +7,11 @@ import './style.css'
 
 export default function MusicPage(props) {
 
-    let { setAudio, ...Next } = props.info;
+    let { setAudio, setAudioFile, ...Next } = props.info;
 
     let uploadAudio = (event) => {
         let audio = URL.createObjectURL(event.target.files[0]);
+        setAudioFile(event.target.files[0]);
         setAudio(audio);
     }
 

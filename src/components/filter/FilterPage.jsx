@@ -7,8 +7,8 @@ import "./style.css";
 
 export default function FilterPage(props) {
     let [crop, setCrop] = useState([]);
-    const [filter,setFilter] = useState('')
-    const [age, setAge] = useState('');
+    const [filter,setFilter] = props.filter;
+    const [size, setSize] = props.size;
 
     function Continue() {
         props.setPage("download");
@@ -19,7 +19,7 @@ export default function FilterPage(props) {
     }
 
     const handleChange = (event) => {
-        setAge(event.target.value);
+        setSize(event.target.value);
     };
 
     useEffect(() => {
@@ -30,8 +30,8 @@ export default function FilterPage(props) {
 
     return <div className="filterPage container">
         <div className="filterList">
-            {["original", "bw"].map((elmt) => {
-                return <Card onClick={chooseFilter} photo={photo} text={elmt}/>
+            {["original", "bw"].map((elmt, key) => {
+                return <Card key={key} onClick={chooseFilter} photo={photo} text={elmt}/>
             })}
         </div>
         <div className="listCrop">
@@ -40,7 +40,7 @@ export default function FilterPage(props) {
                 labelId="demo-simple-select-filled-label"
                 id="demo-simple-select-filled"
                 className="select"
-                value={age}
+                value={size}
                 onChange={handleChange}
             >
                 {crop.map(elmt => <MenuItem value={elmt}>{elmt}</MenuItem>)}
@@ -48,9 +48,9 @@ export default function FilterPage(props) {
 
         </div>
         <div className="filterContinue">
-            <button onClick={Continue} className="submitBth border animation1" disabled={!(age && filter)}>Continue
+            <button onClick={Continue} className="submitBth border animation1" disabled={!(size && filter)}>Continue
             </button>
-            <p style={{opacity: age && filter ? 0 : 1}} className="alert">Select filter and size</p>
+            <p style={{opacity: size && filter ? 0 : 1}} className="alert">Select filter and size</p>
         </div>
     </div>
 }
