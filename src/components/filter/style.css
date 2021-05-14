@@ -5,7 +5,7 @@
     height: 70vh;
 }
 
-.filterPage:nth-child() {
+.filterPage:nth-child {
     box-sizing: border-box;
 }
 

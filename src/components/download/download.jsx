@@ -15,7 +15,7 @@ export default function Download(props) {
         (async function () {
             try {
                 let data = new FormData();
-                data.append("file", props.audio);
+                data.append("audio", props.audio);
                 props.files.forEach((element) => {
                     data.append("file", element);
                 });
