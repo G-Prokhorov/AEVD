@@ -16,6 +16,8 @@ export default function Download(props) {
     console.log(err)
 
     useEffect(() => {
+        let source = Axios.CancelToken.source();
+        const link = document.createElement('a');
         (async function () {
             try {
                 let data = new FormData();
@@ -27,18 +29,19 @@ export default function Download(props) {
                 data.append("mark", JSON.stringify(props.mark));
                 data.append("filter", props.filter);
                 /*data.append("size", props.size);*/
-                let res = await Axios.post("http://localhost:5000/upload", data);
+
+                let res = await Axios.post("http://localhost:5000/upload", data, {cancelToken: source.token});
                 if (res.status === 200) {
                     let result = await Axios.get("http://localhost:5000/upload", {
                         responseType: 'blob',
                         timeout: 30000,
+                        cancelToken: source.token,
                     });
                     if (result.status === 304 || result.status === 200) {
                         let blob = result.data;
                         const url = await window.URL.createObjectURL(
                             new Blob([blob]),
                         );
-                        const link = document.createElement('a');
                         link.href = url;
                         link.setAttribute(
                             'download',
@@ -48,7 +51,9 @@ export default function Download(props) {
                         link.click();
                         setLink(link)
                         setState(true)
-                        return () => link.parentNode.removeChild(link);
+                        Axios.delete("http://localhost:5000/upload", {
+                            cancelToken: source.token,
+                        });
                     } else {
                         if (result.status === 500) {
                             setState(false)
@@ -56,7 +61,7 @@ export default function Download(props) {
                         }
                     }
                 }
-else {
+                else {
                     setState(false)
                     new Error("Failed to make video. Try to put more markers or upload more files.")
                 }
@@ -66,6 +71,10 @@ else {
                 console.error("Error while upload files. " + e)
             }
         })()
+        return () => {
+            source.cancel();
+            link.remove();
+        }
     }, [])
 
     function show() {
