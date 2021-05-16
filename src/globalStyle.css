@@ -16,7 +16,7 @@ html {
 }
 
 .animation1:hover {
-    box-shadow: 0px 0px 18px 10px #241337;
+    box-shadow: 0 0 18px 10px #241337;
 }
 
 .animation1:active {

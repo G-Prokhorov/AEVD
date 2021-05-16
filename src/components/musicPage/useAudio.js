@@ -7,18 +7,18 @@ const useAudio = () => {
     const [Time, setTime] = useState(0);
     const [Duration, setDuration] = useState(-2);
     const [line, setLine] = useState(0);
-    audio.volume = 0.1;
+    audio.volume = 0.5;
 
     const toggle = () => setPlaying(!playing);
 
-    const setTimePos = (target) => {
+    const setTimePos = (time) => {
         setPlaying(false);
-        let width = target.offsetWidth / TapeTimeLen;
-        setTime(Math.round(target.scrollLeft / width));
+        setTime(time);
         audio.currentTime = Time;
     }
 
     const setAudio = (url) => {
+        setTime(0)
         setPlaying(false);
         audio.pause();
         audio.src = url;

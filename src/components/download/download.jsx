@@ -2,6 +2,7 @@ import {React, useEffect, useState} from "react";
 import "./style.css";
 import Axios from "axios";
 import Animation from "./animation";
+import Statellite from "../svgComp/statellite";
 
 export default function Download(props) {
     const [downloadState, setState] = useState(false);
@@ -20,7 +21,7 @@ export default function Download(props) {
                     data.append("file", element);
                 });
                 data.append("time", props.time);
-                data.append("mark", props.mark);
+                data.append("mark", JSON.stringify(props.mark));
                 data.append("filter", props.filter);
                 data.append("size", props.size);
                 let res = await Axios.post("http://localhost:5000/upload", data);
@@ -28,9 +29,8 @@ export default function Download(props) {
                     responseType: 'blob',
                     timeout: 30000,
                 });
-                console.log(result);
                 if (result) {
-                    let blob = result.data
+                    let blob = result.data;
                     const url = await window.URL.createObjectURL(
                         new Blob([blob]),
                     );
@@ -64,6 +64,7 @@ export default function Download(props) {
                         d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                 </svg>
             </button>
+            <Statellite />
         </div> :  <div className="animationLoad">
             <Animation />
         </div>}

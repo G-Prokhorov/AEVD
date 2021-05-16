@@ -9,17 +9,21 @@ export default function Tape(props) {
     let [err, setErr] = useState(false);
 
     function scroll(event) {
-        setTime(event.target);
+        setLeft(event.target.scrollLeft);
+        let width = event.target.offsetWidth / TapeTimeLen;
+        let time = Math.round(event.target.scrollLeft / width);
+        setTime(time);
     }
 
     function Continue() {
-        stop()
+        stop();
         props.setPage("interval");
     }
 
-    let { audio, playing, toggle, Time, setTime, duration, stop } = props.info;
+    let { audio, playing, toggle, Time, setTime, duration, stop, left, setLeft } = props.info;
 
     useEffect(() => {
+        setLeft(0)
         if (duration < 20 && audio.src) {
             setErr(true);
             let timeout = setTimeout(() => {
@@ -28,10 +32,13 @@ export default function Tape(props) {
 
             return () => { clearTimeout(timeout) }
         }
-    }, [duration])
+    }, [duration]);
 
     useEffect(() => {
         if (audio.src) {
+            let block = document.querySelector("#tape");
+            block.scrollLeft = left;
+
             let waveform = wave('#waveform', audio);
             return () => {
                 waveform.destroy();
@@ -48,12 +55,12 @@ export default function Tape(props) {
         </div>
         <div className="tapePanel">
             <div id="tape" className="tapeMusic border" onScroll={scroll}>
-                <div id="waveform" className="soundtrack" style={{ width: my_width + "%" }}></div>
+                <div id="waveform" className="soundtrack" style={{ width: my_width + "%"}} />
             </div>
             <PlayBth playing={playing} toggle={toggle} />
             <Error text="Upload a file at least 20 seconds long" action={err} />
         </div>
-        <button onClick={Continue} className="musicContinue submitBth border animation1" disabled={duration < 20 ? true : false} >Continue</button>
+        <button onClick={Continue} className="musicContinue submitBth border animation1" disabled={duration < 20} >Continue</button>
         <p style={{ opacity: audio.src ? 0 : 1 }} className="alert">Select audio file</p>
     </div >
 }

@@ -15,7 +15,7 @@ export default function FilterPage(props) {
     }
 
     function chooseFilter(event) {
-        setFilter(event.currentTarget.id)
+        setFilter(event.currentTarget.id);
     }
 
     const handleChange = (event) => {
@@ -24,13 +24,24 @@ export default function FilterPage(props) {
 
     useEffect(() => {
         //req to back
-        setCrop(["1:1", "9:16"])
-    }, [])
+        setCrop(["1:1", "9:16"]);
+    }, []);
+
+    useEffect(() => {
+        const elmts = document.querySelector(".filterList");
+        for (let elm of elmts.childNodes) {
+            if (elm.id === filter) {
+                elm.classList.add("shadowCard")
+            } else {
+                elm.classList.remove("shadowCard")
+            }
+        }
+    }, [filter])
 
 
     return <div className="filterPage container">
         <div className="filterList">
-            {["original", "bw"].map((elmt, key) => {
+            {["original", "b&w"].map((elmt, key) => {
                 return <Card key={key} onClick={chooseFilter} photo={photo} text={elmt}/>
             })}
         </div>
@@ -48,7 +59,7 @@ export default function FilterPage(props) {
 
         </div>
         <div className="filterContinue">
-            <button onClick={Continue} className="submitBth border animation1" disabled={!(size && filter)}>Continue
+            <button onClick={Continue} className="submitBth border animation1" disabled={!(size && filter)}>Upload
             </button>
             <p style={{opacity: size && filter ? 0 : 1}} className="alert">Select filter and size</p>
         </div>

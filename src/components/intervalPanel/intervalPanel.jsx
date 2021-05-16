@@ -10,8 +10,8 @@ import Statellite from "../svgComp/statellite";
 import "./style.css";
 
 const TapeTimeLen = 20;
-const maxInterval = 2.1;
-const minInterval = 0.5;
+let maxInterval = 3.0;
+let minInterval = 1.2;
 
 export default function IntervalPanel(props) {
     let { playing, toggle, Time, duration, reset, audio, line } = props.info;
@@ -94,9 +94,9 @@ export default function IntervalPanel(props) {
     return <>
         <div className="container intervalPanel">
             <div className="forMark" style={{ cursor: clear ? "default" : "crosshair" }}>
-                <div className="line" style={{ left: line + "%" }}></div>
+                <div className="line" style={{ left: line + "%" }} />
                 <div onClick={handleClick} id="musicInterval" className="border">
-                    <div id="waveform" style={{ width: my_width + "%", left: "-" + left + "px", }}></div>
+                    <div id="waveform" style={{ width: my_width + "%", left: "-" + left + "px", }} />
                 </div>
                 {/* for mark */}
                 {mark.map((elmt) => {
@@ -116,7 +116,10 @@ export default function IntervalPanel(props) {
                         </svg>
                     </button>
                 </div>
-                <button onClick={() => { ClearAll(); setGenerate(true); }} className="submitBth border animation1 generator">Auto generate</button>
+                <div className="generator">
+                    <button onClick={() => { maxInterval = 3.0; minInterval = 1.2; ClearAll(); setGenerate(true); }} className="submitBth border animation1">Chill</button>
+                    <button onClick={() => { maxInterval = 2.1; minInterval = 0.8; ClearAll(); setGenerate(true); }} className="submitBth border animation1">Dynamic</button>
+                </div>
                 <div>
                     <button onClick={reset} className="submitBth border animation1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#6328B8" className="play" viewBox="0 0 16 16">
@@ -128,12 +131,10 @@ export default function IntervalPanel(props) {
                 </div>
             </div>
             <div id="intervalBth" className="container">
-                <button onClick={Continue} className="submitBth border animation1" disabled={mark.length < 5 ? true : false} >Continue</button>
+                <button onClick={Continue} className="submitBth border animation1" disabled={mark.length < 5} >Continue</button>
                 <p style={{ opacity: mark.length < 5 ? 1 : 0 }} className="alert">Add minimum 5 mark</p>
             </div>
         </div >
-
-        <Wire classname={"wireMain"} />
         <Statellite />
     </>
 }

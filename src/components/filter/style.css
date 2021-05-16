@@ -17,7 +17,7 @@
 }
 
 .card {
-    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.09);
     width: 250px;
     height: 290px;
     padding: 15px;
@@ -32,12 +32,48 @@
     background: #8d8d8d;
 }
 
+
+.shadowCard {
+    animation: shadow_change 0.1s linear forwards;
+}
+
+@keyframes shadow_change {
+    0% {
+        width: 250px;
+        height: 290px;
+        box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.09);
+        font-size: 24px;
+    }
+    100% {
+        width: 300px;
+        height: 348px;
+        box-shadow: 0 0 20px 4px #4d1988;
+        font-size: 28px;
+    }
+}
+
 .card > img {
     object-fit: cover;
     width: 220px;
     height: 220px;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+.shadowCard > img  {
+    animation: size_change 0.1s linear forwards;
+}
+
+@keyframes size_change {
+    0% {
+        width: 220px;
+        height: 220px;
+    }
+    100%
+    {
+        width: 270px;
+        height: 270px;
+    }
 }
 
 .listCrop, .filterContinue {
@@ -72,6 +108,6 @@
 }
 
 .filterContinue > button {
-    width: 30%;
-    height: 50px;
+    width: 25%;
+    height: 70px;
 }

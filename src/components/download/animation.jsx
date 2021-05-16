@@ -23,21 +23,18 @@ export default function Animation() {
     const frontSquare = useAnimatePresence({
         variants: frontVariants,
         initial: "hidden",
-        debugName: "front-square"
     });
 
     const middleSquare = useAnimatePresence({
         variants: middleVariants,
         initial: "hidden",
         wait: frontSquare.togglePresence,
-        debugName: "middle-square"
     });
 
     const bgSquare = useAnimatePresence({
         variants: bgVariants,
         initial: "visible",
         wait: middleSquare.togglePresence,
-        debugName: "bq-square"
     });
 
     useEffect(() => {

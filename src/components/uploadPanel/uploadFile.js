@@ -3,7 +3,7 @@ export default function uploadF(setBlock, showErr, setFiles) {
         setBlock(true);
         let files = Array.from(event.target.files);
 
-        if (files.length < 1) {
+        if (files.length < 5) {
             showErr();
             return;
         }
@@ -32,7 +32,7 @@ export default function uploadF(setBlock, showErr, setFiles) {
                 result += time;
             }
         }).then(() => {
-            if (result > 3) {
+            if (result > 30 && result < 600) {
                 setFiles(files);
                 setBlock(false);
             } else {

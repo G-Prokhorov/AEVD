@@ -23,9 +23,10 @@ function App() {
   let [audio, playing, toggle, Time, setTimePos, duration, reset, setAudio, line] = useAudio();
   let [audioFile, setAudioFile] = useState();
   let [mark, addMark] = useState([]);
+  let [left, setLeft] = useState(0)
   const [size, setSize] = useState('');
   let [page, setPage] = useState('main');
-  const [filter,setFilter] = useState('');
+  const [filter,setFilter] = useState('original');
 
   let showErr = () => {
     setErr(true);
@@ -39,7 +40,7 @@ function App() {
     <>
       <Header setPage={setPage} page={page} stop={reset} />
       {page === 'main' && <Panel state={uploadFiles} err={err} block={block} setPage={setPage} />}
-      {page === 'music' && <Music setPage={setPage} info={{
+      {page === 'music' && <Music setLeft={setLeft} setPage={setPage} info={{
         setAudio: setAudio,
         setAudioFile: setAudioFile,
         audio: audio,
@@ -49,6 +50,8 @@ function App() {
         setTime: setTimePos,
         duration: duration,
         stop: reset,
+        left: left,
+        setLeft: setLeft,
       }} />}
       {page === 'interval' && <IntervalPanel mark={[mark, addMark]} setPage={setPage} info={{
         playing: playing,

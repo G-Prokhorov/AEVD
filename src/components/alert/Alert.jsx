@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Alert(props) {
-    console.log(props);
     function handleClick() {
         props.setShow(false)
     }

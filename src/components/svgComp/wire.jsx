@@ -4,8 +4,8 @@ import "./styleSvg.css"
 
 export default function Wire(props) {
     return <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-        height="200" viewBox="0 0 1939.000000 288.000000"
-        preserveAspectRatio="xMidYMid meet" className={props.classname ? props.classname : "wire"}>
+        height="100" viewBox="0 0 1939.000000 288.000000"
+        preserveAspectRatio="xMidYMid meet" className="wire">
         <g transform="translate(0.000000,288.000000) scale(0.100000,-0.100000)"
             fill="#aaa" stroke="none">
             <path d="M12518 2653 c-98 -107 -144 -274 -155 -560 -4 -107 -10 -153 -18

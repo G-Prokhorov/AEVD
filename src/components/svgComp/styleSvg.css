@@ -1,11 +1,3 @@
-.wireMain {
-    width: 35%;
-    position: fixed;
-    transform: rotate(-45deg);
-    right: -100px;
-    bottom: 10px;
-}
-
 .statellite {
     position: fixed;
     top: 25%;
@@ -17,7 +9,7 @@
 
 .wire {
     position: absolute;
-    bottom: -100px;
+    bottom: -50px;
     transform: rotate(-1deg);
     left: 0;
     right: 45px;
@@ -30,7 +22,7 @@
         width: 90%;
     }
 
-    .wireMain, .statellite {
+    .statellite {
         display: none;
     }
 
