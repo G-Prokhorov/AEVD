@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
-import {Select, InputLabel, MenuItem} from '@material-ui/core';
+import React, {useEffect} from "react";
+/*import {Select, InputLabel, MenuItem} from '@material-ui/core';*/
 
 import photo from "../../img/d883f356f66173c404b5998ff70ea94a.jpg";
 import Card from "./Card";
 import "./style.css";
 
 export default function FilterPage(props) {
-    let [crop, setCrop] = useState([]);
+    /*let [crop, setCrop] = useState([]);*/
     const [filter,setFilter] = props.filter;
-    const [size, setSize] = props.size;
+    /*const [size, setSize] = props.size;*/
 
     function Continue() {
         props.setPage("download");
@@ -18,14 +18,14 @@ export default function FilterPage(props) {
         setFilter(event.currentTarget.id);
     }
 
-    const handleChange = (event) => {
+  /*  const handleChange = (event) => {
         setSize(event.target.value);
-    };
+    };*/
 
-    useEffect(() => {
+    /*useEffect(() => {
         //req to back
         setCrop(["1:1", "9:16"]);
-    }, []);
+    }, []);*/
 
     useEffect(() => {
         const elmts = document.querySelector(".filterList");
@@ -45,7 +45,7 @@ export default function FilterPage(props) {
                 return <Card key={key} onClick={chooseFilter} photo={photo} text={elmt}/>
             })}
         </div>
-        <div className="listCrop">
+        {/*<div className="listCrop">
             <InputLabel id="demo-simple-select-filled-label" className="label">Size: </InputLabel>
             <Select
                 labelId="demo-simple-select-filled-label"
@@ -57,11 +57,11 @@ export default function FilterPage(props) {
                 {crop.map(elmt => <MenuItem value={elmt}>{elmt}</MenuItem>)}
             </Select>
 
-        </div>
+        </div>*/}
         <div className="filterContinue">
-            <button onClick={Continue} className="submitBth border animation1" disabled={!(size && filter)}>Upload
+            <button onClick={Continue} className="submitBth border animation1" disabled={!filter}>Upload
             </button>
-            <p style={{opacity: size && filter ? 0 : 1}} className="alert">Select filter and size</p>
+            <p style={{opacity: filter ? 0 : 1}} className="alert">Select filter and size</p>
         </div>
     </div>
 }

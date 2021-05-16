@@ -1,6 +1,6 @@
 .filterPage {
     display: grid;
-    grid-template-rows: 60% 20% 20%;
+    grid-template-rows: 60% 40%;
     grid-template-columns: 100%;
     height: 70vh;
 }
@@ -45,8 +45,8 @@
         font-size: 24px;
     }
     100% {
-        width: 300px;
-        height: 348px;
+        width: 273px;
+        height: 316px;
         box-shadow: 0 0 20px 4px #4d1988;
         font-size: 28px;
     }
@@ -71,8 +71,8 @@
     }
     100%
     {
-        width: 270px;
-        height: 270px;
+        width: 250px;
+        height: 250px;
     }
 }
 
@@ -108,6 +108,20 @@
 }
 
 .filterContinue > button {
-    width: 25%;
+    margin-top: 50px;
+    width: 280px;
     height: 70px;
+}
+
+@media screen and (max-width: 900px) {
+    .filterPage {
+        height: auto;
+        min-height: 100vh;
+        grid-template-rows: 80% 20%;
+    }
+    .filterList {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
 }

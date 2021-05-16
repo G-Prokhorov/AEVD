@@ -3,6 +3,18 @@ header {
     height: 65px;
     background: transparent;
     text-align: center;
+    position: relative;
+}
+
+.back {
+    position: absolute;
+    left: 32px;
+    top: 12px;
+    transition: 0.7s;
+}
+
+.back:hover {
+    fill: #4d1988;
 }
 
 .logo {
@@ -54,6 +66,10 @@ footer {
         height:  120px;
    }
 
+    .back {
+        left: 10px;
+    }
+
    .childFoo {
        margin: 10px 0;
        width: 130px;
@@ -62,8 +78,4 @@ footer {
    .childFooName {
        order: 1;
    }
-}
-  
-@media screen and (max-width: 600px) {
-    
 }

@@ -21,6 +21,8 @@
     color: #ffffff;
     font-size: 28px;
     letter-spacing: 10px;
+    max-width: 60vw;
+    line-height: 2;
 }
 
 .save {

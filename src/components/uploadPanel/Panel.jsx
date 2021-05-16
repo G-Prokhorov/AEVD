@@ -16,13 +16,13 @@ export default function UploadPanel(props) {
             </div>
             <div className="button">
                 <button onClick={() => { props.setPage('music') }} className="submitBth border animation1" disabled={props.block}>Continue</button>
-                <p style={{ opacity: props.block ? 1 : 0 }} className="alert">Select files</p>
+                <p style={{ opacity: props.block ? 1 : 0 }} className="alert">Select minimum 8 files</p>
             </div>
 
 
 
         </main>
-        <ErrorDiv text="You could upload file" action={props.err} />
+        <ErrorDiv text="Upload at least 8 files in total length from 40 seconds to 10 minutes" action={props.err} />
         <Statellite />
     </>
 }

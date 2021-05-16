@@ -24,7 +24,7 @@ function App() {
   let [audioFile, setAudioFile] = useState();
   let [mark, addMark] = useState([]);
   let [left, setLeft] = useState(0)
-  const [size, setSize] = useState('');
+/*  const [size, setSize] = useState('');*/
   let [page, setPage] = useState('main');
   const [filter,setFilter] = useState('original');
 
@@ -32,7 +32,7 @@ function App() {
     setErr(true);
     setTimeout(() => {
       setErr(false);
-    }, 4000);
+    }, 6000);
   }
 
   let uploadFiles = uploadF(setBlock, showErr, setFiles);
@@ -53,7 +53,7 @@ function App() {
         left: left,
         setLeft: setLeft,
       }} />}
-      {page === 'interval' && <IntervalPanel mark={[mark, addMark]} setPage={setPage} info={{
+      {page === 'interval' && <IntervalPanel err={err} showErr={showErr} mark={[mark, addMark]} setPage={setPage} info={{
         playing: playing,
         toggle: toggle,
         Time: Time,
@@ -63,8 +63,8 @@ function App() {
         line: line,
       }} />}
 
-      {page === 'filter' && <FilterPage size={[size, setSize]} filter={[filter,setFilter]} setPage={setPage} />}
-      {page === 'download' && <Download audio={audioFile} time={Time} mark={mark} filter={filter} size={size} files={files}/>}
+      {page === 'filter' && <FilterPage filter={[filter,setFilter]} setPage={setPage} />}
+      {page === 'download' && <Download audio={audioFile} time={Time} mark={mark} filter={filter} files={files} />}
       <Footer />
     </>
   );

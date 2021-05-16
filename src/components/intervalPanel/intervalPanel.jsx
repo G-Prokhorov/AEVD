@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 import PlayBth from "../musicPage/PlayBth";
 import wave from "../musicPage/wave";
 import Mark from "./Mark";
-
-import Wire from "../svgComp/wire";
 import Statellite from "../svgComp/statellite";
-
 import "./style.css";
+import Error from "../alert/Error";
 
 const TapeTimeLen = 20;
 let maxInterval = 3.0;
@@ -55,7 +53,7 @@ export default function IntervalPanel(props) {
 
     function handleClick(event) {
         if (!clear) {
-            if (event.nativeEvent.offsetX > 0 && mark.length <= 30) { // was also - left
+            if (event.nativeEvent.offsetX > 0 && mark.length <= 40) { // was also - left
                 let leftMark = event.nativeEvent.offsetX;
                 let musicInterval = document.getElementById("musicInterval").offsetWidth;
                 let tm = TapeTimeLen * leftMark / musicInterval;
@@ -64,6 +62,8 @@ export default function IntervalPanel(props) {
                     time: parseFloat(tm.toFixed(2)),
                     left: leftMark - 1,
                 }]);
+            } else if (mark.length > 40) {
+                props.showErr();
             }
         }
     }
@@ -132,9 +132,10 @@ export default function IntervalPanel(props) {
             </div>
             <div id="intervalBth" className="container">
                 <button onClick={Continue} className="submitBth border animation1" disabled={mark.length < 5} >Continue</button>
-                <p style={{ opacity: mark.length < 5 ? 1 : 0 }} className="alert">Add minimum 5 mark</p>
+                <p style={{ opacity: mark.length < 5 ? 1 : 0 }} className="alert">Add minimum 5 marks</p>
             </div>
         </div >
+        <Error text="You cannot add more than 40 marks" action={props.err} />
         <Statellite />
     </>
 }
