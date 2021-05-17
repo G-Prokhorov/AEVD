@@ -9,7 +9,7 @@ import Statellite from "../svgComp/statellite";
 export default function UploadPanel(props) {
     return <>
         <main className="container panel">
-            <Upload accept={".mp4, .mkv, .webm"} multiple={true} state={props.state} />
+            <Upload accept={".mp4, .mkv, .webm, .mov"} multiple={true} state={props.state} />
             <div className="composition">
                 <img src={moon} alt="" className="moon" />
                 <div className="video" />

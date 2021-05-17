@@ -51,7 +51,7 @@ export default function Download(props) {
                         link.click();
                         setLink(link)
                         setState(true)
-                        Axios.delete("http://localhost:5000/upload", {
+                        Axios.patch("http://localhost:5000/upload", {
                             cancelToken: source.token,
                         });
                     } else {
